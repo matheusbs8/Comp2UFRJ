@@ -71,7 +71,8 @@ public class FracaoTest {
 
         Fracao f = new Fracao(1, 7);
 
-        Fracao fracaoGeratrizObtida = f.getFracaoGeratriz();
+        Fracao fracaoGeratrizObtida;
+        fracaoGeratrizObtida = f.getFracaoGeratriz();
 
         assertTrue(fracaoGeratrizObtida == f);  // quero verificar que são de fato o mesmo objeto
     }
