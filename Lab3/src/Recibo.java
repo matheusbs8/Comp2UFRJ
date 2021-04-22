@@ -1,3 +1,5 @@
+//Nome: Matheus Barroso de Santana
+//DRE: 120041661
 public class Recibo {
     private Produto produto;
     private int quantidade;

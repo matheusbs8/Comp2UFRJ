@@ -1,3 +1,5 @@
+//Nome: Matheus Barroso de Santana
+//DRE: 120041661
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,7 +17,7 @@ public class LojaTest {
     private static DecimalFormatSymbols symbols = format.getDecimalFormatSymbols();
     private static char sep = symbols.getDecimalSeparator();
 
-    private Loja loja;
+    private LojaNaoSingletonParaTeste loja;
     private Usuario comprador;
     private Livro guinessBook;
     private Brinquedo cuboMagico;

@@ -1,6 +1,8 @@
+//Nome: Matheus Barroso de Santana
+//DRE: 120041661
 public class Brinquedo extends Produto {
-private String marca;
-private int idadeMinimaRecomendada;
+    private String marca;
+    private int idadeMinimaRecomendada;
     public Brinquedo(String descricao) {
         super(descricao, "url do brinquedo");
     }
