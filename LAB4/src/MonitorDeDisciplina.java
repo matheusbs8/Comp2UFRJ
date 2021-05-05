@@ -1,3 +1,5 @@
+//Nome: Matheus Barroso de Santana
+//DRE:120041661
 public class MonitorDeDisciplina extends Aluno {
 
     public static final float CRA_MINIMO_PARA_RENOVACAO_MONITORIA = 6.0f;

@@ -1,3 +1,5 @@
+//Nome: Matheus Barroso de Santana
+//DRE:120041661
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -75,7 +77,7 @@ public class Aluno extends Pessoa{
 
 
     public int getIdade() {
-        return Siguinha.obterAnoCorrente() - anoNascimento;
+        return Siguinha.obterAnoCorrente() - super.getAnoNascimento();
     }
 
     // ATENÇÃO: NÃO QUEREMOS UM SETTER PÚBLICO PARA O CRA!!!!!!
@@ -140,7 +142,7 @@ public class Aluno extends Pessoa{
     }
 
     public String getHistoricoParaImpressao() {
-        String resultado = "Aluno(a): " + this.nome +
+        String resultado = "Aluno(a): " + super.getNome() +
                 " (DRE: " + this.dre + ")\n";
         for (int i = 0; i < this.historico.size(); i++) {
             ItemHistorico itemHistorico = this.historico.get(i);

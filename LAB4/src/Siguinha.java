@@ -1,3 +1,5 @@
+//Nome: Matheus Barroso de Santana
+//DRE:120041661
 import java.util.Calendar;
 import java.util.HashMap;
 
@@ -44,12 +46,14 @@ public class Siguinha {
         return periodoCorrente;
     }
 
-    public static void cadatrarAluno(long dre,String nome){
+    public static void cadastrarAluno(long dre,String nome){
         if(alunoBydre.get(dre)!=null){
             System.out.println("dre já cadastrado");
         }
-        Aluno novo = new Aluno(dre, nome);
-        alunoBydre.put(dre, novo);
+        else {
+            Aluno novo = new Aluno(dre, nome);
+            alunoBydre.put(dre, novo);
+        }
     }
     public static Aluno obterAluno(long dre){
         if(alunoBydre.get(dre)==null){
