@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 
 public class AlbumTest {
 
-    private Album albumFigurinhas;
+    private Album<Figurinha> albumFigurinhas;
     private Repositorio repositorioFigurinhas;
 
     private static final int TAMANHO_DO_ALBUM = 200;
@@ -107,7 +107,7 @@ public class AlbumTest {
     @Test
     public void testarGetItemColado() {
         popularAlbum(new int[] {1, 2, 3});
-        Figurinha figurinha = albumFigurinhas.getItemColado(2);
+        Figurinha figurinha = (Figurinha) albumFigurinhas.getItemColado(2);
 
         assertNotNull(figurinha);
 

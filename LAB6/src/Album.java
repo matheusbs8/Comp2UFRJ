@@ -2,7 +2,7 @@ import java.awt.*;
 import java.util.*;
 import java.util.List;
 
-public class Album {
+public class Album<T extends Colecionavel>{
 
     public static final int PERCENTUAL_MINIMO_PARA_AUTO_COMPLETAR = 90;
 
@@ -11,7 +11,7 @@ public class Album {
     private final Repositorio repositorio;
     private final int quantItensPorPacotinho;
 
-    private List<Figurinha> colecionaveisColados;  // direct addressing
+    private List<T> colecionaveisColados;  // direct addressing
     private int quantColecionaveisColadas;
 
     // poderíamos fazer novamente direct addressing para as repetidas,
@@ -34,7 +34,7 @@ public class Album {
     }
 
     public void receberNovoPacotinho(Pacotinho pacotinho) {
-        Figurinha colecionaveisDoPacotinho[] = pacotinho.getFigurinhas();
+        T colecionaveisDoPacotinho[] = (T[]) pacotinho.getFigurinhas();
         if (colecionaveisDoPacotinho.length != this.quantItensPorPacotinho) {
             return;  // melhor ainda: lançaria uma checked exception
         }
@@ -61,8 +61,8 @@ public class Album {
         }
     }
 
-    public Figurinha getItemColado(int posicao) {
-        for(Figurinha col : colecionaveisColados){
+    public T getItemColado(int posicao) {
+        for(T col : colecionaveisColados){
             if(col!=null) {
                 if (col.getPosicao() == posicao) {
                     return col;
@@ -106,7 +106,7 @@ public class Album {
             for(int i=1; i<getTamanho(); i++){
                 if(colecionaveisColados.get(i)==null) {
                     if(colecionaveisColados instanceof  Figurinha)
-                        colecionaveisColados.set(i,new Figurinha(i, ""));
+                        colecionaveisColados.set(i,(T)new Figurinha(i, ""));
                    /* if(colecionaveisColados instanceof  Selo) {
                         Random r= new Random();
                         colecionaveisColados.set(i, (T)new Selo(i,"g", "Brasil", r.nextFloat()));
