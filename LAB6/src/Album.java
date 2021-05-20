@@ -2,7 +2,7 @@ import java.awt.*;
 import java.util.*;
 import java.util.List;
 
-public class Album<T extends Colecionavel>{
+public class Album{
 
     public static final int PERCENTUAL_MINIMO_PARA_AUTO_COMPLETAR = 90;
 
@@ -11,7 +11,7 @@ public class Album<T extends Colecionavel>{
     private final Repositorio repositorio;
     private final int quantItensPorPacotinho;
 
-    private List<T> colecionaveisColados;  // direct addressing
+    private List<Colecionavel> colecionaveisColados;  // direct addressing
     private int quantColecionaveisColadas;
 
     // poderíamos fazer novamente direct addressing para as repetidas,
@@ -34,7 +34,7 @@ public class Album<T extends Colecionavel>{
     }
 
     public void receberNovoPacotinho(Pacotinho pacotinho) {
-        T colecionaveisDoPacotinho[] = (T[]) pacotinho.getFigurinhas();
+        Colecionavel colecionaveisDoPacotinho[] = (Colecionavel[]) pacotinho.getFigurinhas();
         if (colecionaveisDoPacotinho.length != this.quantItensPorPacotinho) {
             return;  // melhor ainda: lançaria uma checked exception
         }
@@ -61,8 +61,8 @@ public class Album<T extends Colecionavel>{
         }
     }
 
-    public T getItemColado(int posicao) {
-        for(T col : colecionaveisColados){
+    public Colecionavel getItemColado(int posicao) {
+        for(Colecionavel col : colecionaveisColados){
             if(col!=null) {
                 if (col.getPosicao() == posicao) {
                     return col;
@@ -105,16 +105,10 @@ public class Album<T extends Colecionavel>{
         if((getQuantItensColados()*100/getTamanho()>=PERCENTUAL_MINIMO_PARA_AUTO_COMPLETAR)){
             for(int i=1; i<getTamanho(); i++){
                 if(colecionaveisColados.get(i)==null) {
-                    if(colecionaveisColados instanceof  Figurinha)
-                        colecionaveisColados.set(i,(T)new Figurinha(i, ""));
-                   /* if(colecionaveisColados instanceof  Selo) {
-                        Random r= new Random();
-                        colecionaveisColados.set(i, (T)new Selo(i,"g", "Brasil", r.nextFloat()));
-                    }*/
+                        colecionaveisColados.set(i,(Colecionavel) new Figurinha(i, "http://www.nossoalbum.com.br/imagens/"+i));
+                        this.quantColecionaveisColadas++;
+                        }
 
-                    this.quantColecionaveisColadas++;
-                        System.out.println(i);
-                }
             }
 
         }

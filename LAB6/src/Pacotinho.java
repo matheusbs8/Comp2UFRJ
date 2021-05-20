@@ -9,7 +9,7 @@ public class Pacotinho {
             int j=0;
             for (int i=0; i<posicoesDesejadas.length;i++){
                 if(posicoesDesejadas[i]< repo.getTotalFigurinhas()+1 && posicoesDesejadas[i]>0){
-                    fig[j]=new Figurinha(posicoesDesejadas[i], "imagem da figurinha"+posicoesDesejadas[i]);
+                    fig[j]=new Figurinha(posicoesDesejadas[i], "http://www.nossoalbum.com.br/imagens/"+posicoesDesejadas[i]);
                     j++;
                 }
             }

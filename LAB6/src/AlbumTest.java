@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 
 public class AlbumTest {
 
-    private Album<Figurinha> albumFigurinhas;
+    private Album albumFigurinhas;
     private Repositorio repositorioFigurinhas;
 
     private static final int TAMANHO_DO_ALBUM = 200;

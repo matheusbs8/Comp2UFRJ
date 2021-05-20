@@ -8,9 +8,9 @@ public class Repositorio{
 
     private List<Figurinha> todasAsFigurinhas;
 
-    public Repositorio(String sufixoUrlImagens, int quantColecionaveis) {
-        todasAsFigurinhas = new ArrayList<>(quantColecionaveis);
-        for (int i = 1; i <= quantColecionaveis; i++) {
+    public Repositorio(String sufixoUrlImagens, int quantFigurinhas) {
+        todasAsFigurinhas = new ArrayList<>(quantFigurinhas);
+        for (int i = 1; i <= quantFigurinhas; i++) {
             Figurinha fig = new Figurinha(i, PREFIXO_URL_IMAGENS + sufixoUrlImagens);
             todasAsFigurinhas.add(fig);
         }
