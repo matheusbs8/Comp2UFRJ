@@ -1,8 +1,10 @@
+//Nome: Matheus Barroso de Santana
+//DRE: 120041661
 import java.awt.*;
 import java.util.*;
 import java.util.List;
 
-public class Album{
+public class Album<T extends Colecionavel>{
 
     public static final int PERCENTUAL_MINIMO_PARA_AUTO_COMPLETAR = 90;
 
@@ -11,7 +13,7 @@ public class Album{
     private final Repositorio repositorio;
     private final int quantItensPorPacotinho;
 
-    private List<Colecionavel> colecionaveisColados;  // direct addressing
+    private List<T> colecionaveisColados;  // direct addressing
     private int quantColecionaveisColadas;
 
     // poderíamos fazer novamente direct addressing para as repetidas,
@@ -34,10 +36,11 @@ public class Album{
     }
 
     public void receberNovoPacotinho(Pacotinho pacotinho) {
-        Colecionavel colecionaveisDoPacotinho[] = (Colecionavel[]) pacotinho.getFigurinhas();
+        T colecionaveisDoPacotinho[] = (T[]) pacotinho.getFigurinhas();
         if (colecionaveisDoPacotinho.length != this.quantItensPorPacotinho) {
             return;  // melhor ainda: lançaria uma checked exception
         }
+
 
         for (int i =0; i<colecionaveisDoPacotinho.length; i++ ) {
             final int posicao = colecionaveisDoPacotinho[i].getPosicao();
@@ -61,8 +64,8 @@ public class Album{
         }
     }
 
-    public Colecionavel getItemColado(int posicao) {
-        for(Colecionavel col : colecionaveisColados){
+    public T getItemColado(int posicao) {
+        for(T col : colecionaveisColados){
             if(col!=null) {
                 if (col.getPosicao() == posicao) {
                     return col;
@@ -85,13 +88,7 @@ public class Album{
     }
 
     public int getQuantItensColados() {
-//        int contador = 0;
-//        for (Figurinha fig : this.figurinhasColadas) {
-//            if (fig != null) {
-//                contador++;
-//            }
-//        }
-//        return contador;
+//
 
         // melhor jeito: atributo!
         return this.quantColecionaveisColadas;
@@ -105,15 +102,11 @@ public class Album{
         if((getQuantItensColados()*100/getTamanho()>=PERCENTUAL_MINIMO_PARA_AUTO_COMPLETAR)){
             for(int i=1; i<getTamanho(); i++){
                 if(colecionaveisColados.get(i)==null) {
-                        colecionaveisColados.set(i,(Colecionavel) new Figurinha(i, "http://www.nossoalbum.com.br/imagens/"+i));
-                        this.quantColecionaveisColadas++;
-                        }
-
+                    colecionaveisColados.set(i,(T)repositorio.getColecionaveis().get(i));
+                    this.quantColecionaveisColadas++;
+                }
             }
-
         }
-
-
     }
 
     private Image getImagem(int posicao) {
